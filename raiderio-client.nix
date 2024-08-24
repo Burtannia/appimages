@@ -3,7 +3,6 @@
 let
   pname = "raiderio-client";
   version = "4.4.0";
-  dname = "RaiderIO";
 
   src = fetchurl {
     url = "https://github.com/RaiderIO/raiderio-client-builds/releases/download/v4.4.0/RaiderIO_Installer_Linux_x86_64.AppImage";
@@ -11,16 +10,13 @@ let
   };
 
   appimageContents = appimageTools.extractType1 { inherit pname version src; };
+
+  mkDesktop = import ./desktop-helper.nix;
 in appimageTools.wrapType1 {
   inherit pname version src;
  
   # Setup Desktop Entry
-  extraInstallCommands = ''
-    install -m 444 -D ${appimageContents}/${pname}.desktop -t $out/share/applications
-    substituteInPlace $out/share/applications/${pname}.desktop \
-      --replace 'Exec=AppRun' 'Exec=${pname}'
-    cp -r ${appimageContents}/usr/share/icons $out/share
-  '';
+  extraInstallCommands = mkDesktop { inherit pname; inherit appimageContents; };
 
   meta = with lib; {
     description = "World of Warcraft RaiderIO client";
