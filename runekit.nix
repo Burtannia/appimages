@@ -9,15 +9,9 @@ let
     hash = "sha256-pahLgQaYyfv0fYpCfehfee5RlyC0WwgadDIvn0Z6nn8=";
   };
 
-  appimageContents = appimageTools.extractType1 { inherit pname version src; };
-
-  mkDesktop = import ./desktop-helper.nix;
 in appimageTools.wrapType1 {
   inherit pname version src;
  
-  # Setup Desktop Entry
-  extraInstallCommands = mkDesktop { inherit pname; inherit appimageContents; };
-
   meta = with lib; {
     description = "Alt1-compatible toolbox for RuneScape 3, for Linux and macOS.";
     mainProgram = "runekit";
