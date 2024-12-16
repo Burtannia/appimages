@@ -16,6 +16,7 @@
       packages.${system} = {
         raiderio-client = pkgs.callPackage ./raiderio-client.nix {};
         warcraftlogs = pkgs.callPackage ./warcraftlogs.nix {};
+        openrgb-pipeline = pkgs.callPackage ./openrgb.nix {};
       };
     };
 }
