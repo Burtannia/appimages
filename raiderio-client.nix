@@ -2,7 +2,7 @@
 
 let
   pname = "raiderio-client";
-  version = "4.4.0";
+  version = "4.10.7";
 
   src = fetchurl {
     url = "https://github.com/RaiderIO/raiderio-client-builds/releases/download/${version}/RaiderIO_Installer_Linux_x86_64.AppImage";
@@ -12,7 +12,7 @@ let
   appimageContents = appimageTools.extractType1 { inherit pname version src; };
 
   mkDesktop = import ./desktop-helper.nix;
-in appimageTools.wrapType1 {
+in appimageTools.wrapType2 {
   inherit pname version src;
  
   # Setup Desktop Entry
