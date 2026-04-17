@@ -17,20 +17,4 @@ in appimageTools.wrapType1 {
  
   # Setup Desktop Entry
   extraInstallCommands = mkDesktop { inherit pname; inherit appimageContents; };
-
-  meta = with lib; {
-    description = "World of Warcraft RaiderIO client";
-    longDescription = ''
-      The Raider.IO App is the World of Warcraft player's best tool to organize and track their Characters,
-      Mythic+ Dungeons, and Raid Progress. It is the combination of the well-known and established
-      Raider.IO AddOn (over 300 million downloads!) and the Raider.IO Client.
-    '';
-
-    mainProgram = "raiderio-client";
-    homepage = "https://raider.io/addon";
-    downloadPage = "https://github.com/RaiderIO/raiderio-client-builds/releases";
-    license = licenses.unfree;
-    maintainers = with maintainers; [ burtannia ];
-    platforms = [ "x86_64-linux" ];
-  };
 }
