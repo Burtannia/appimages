@@ -5,7 +5,7 @@ let
   version = "4.4.0";
 
   src = fetchurl {
-    url = "https://github.com/RaiderIO/raiderio-client-builds/releases/download/v4.4.0/RaiderIO_Installer_Linux_x86_64.AppImage";
+    url = "https://github.com/RaiderIO/raiderio-client-builds/releases/download/${version}/RaiderIO_Installer_Linux_x86_64.AppImage";
     hash = "sha256-BXr4wmgnfs+IioMTpZW2rd8ZVxUMt0UFtt4ww5G7Yxo=";
   };
 
