@@ -15,6 +15,7 @@
     in {
       packages.${system} = {
         raiderio-client = pkgs.callPackage ./raiderio-client.nix {};
+        archon = pkgs.callPackage ./archon.nix {};
       };
     };
 }
