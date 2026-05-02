@@ -11,14 +11,16 @@ let
 
   appimageContents = appimageTools.extractType1 { inherit pname version src; };
 
-  mkDesktop = import ./desktop-helper.nix;
+  appName = "Archon App";
 in appimageTools.wrapType2 {
   inherit pname version src;
  
   # Setup Desktop Entry
-  extraInstallCommands = mkDesktop {
-    inherit pname;
-    inherit appimageContents;
-    desktopFile = "Archon App.desktop";
-  };
+  extraInstallCommands = ''
+    install -m 444 -D '${appimageContents}/${appName}.desktop' -t $out/share/applications
+    substituteInPlace $out/share/applications/'${appName}.desktop' \
+      --replace 'Exec=AppRun' 'Exec=${pname}'
+    install -m 444 -D '${appimageContents}/usr/share/icons/hicolor/512x512/apps/${appName}.png' \
+      $out/share/icons/hicolor/512x512/apps/'${appName}'.png
+  '';
 }
