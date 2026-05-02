@@ -6,7 +6,7 @@ let
 
   src = fetchurl {
     url = "https://github.com/RaiderIO/raiderio-client-builds/releases/download/v${version}/RaiderIO_Installer_Linux_x86_64.AppImage";
-    hash = "sha256-BXr4wmgnfs+IioMTpZW2rd8ZVxUMt0UFtt4ww5G7Yxo=";
+    hash = "sha256-6YkX4DUZLK1F0hP36FGmH3lyDITqjTwyfq9Aqinqi7A=";
   };
 
   appimageContents = appimageTools.extractType1 { inherit pname version src; };
